@@ -7,7 +7,7 @@ void Afficher_Secteur(const char * disque_physique, int Num_sect) ;
 void Lire_Secteur(unsigned char **p, const char * disque_physique, int Num_sect);
 
 void main(){
-    Afficher_Secteur("/dev/sdb", 0) ;
+    Afficher_Secteur("/dev/sda", 0) ;
 }
 
 
@@ -43,10 +43,11 @@ hexadécimal.*/
 void Afficher_Secteur(const char * disque_physique, int Num_sect){
     unsigned char *p; 
     Lire_Secteur(&p,disque_physique, Num_sect);
-    for(int i=1; i<=512; i++){
+    for(int i=0; i<512; i++){
+        if(i%16==0) printf("\n %2d : ",i/16 +1 );
         printf("%02x ", *(p+i-1));
-        if(i%16==0) printf("\n");
     }
+    printf("\n");
 }
 
 
