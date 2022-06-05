@@ -7,7 +7,14 @@ void Afficher_Secteur(const char * disque_physique, int Num_sect) ;
 void Lire_Secteur(unsigned char **p, const char * disque_physique, int Num_sect);
 
 void main(){
-    Afficher_Secteur("/dev/sda", 0) ;
+    char disque[256];
+    char input[256];
+    strcpy(disque, "/dev/");
+    Liste_Disques();    
+    printf("\nEntrez le nom du disque physique : ");
+    scanf("%s", input);
+    strcat(disque,input);
+    Afficher_Secteur(disque, 0) ;
 }
 
 
